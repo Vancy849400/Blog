@@ -19,13 +19,13 @@
       <div class="max-w-4xl mx-auto px-4">
         <div class="flex items-center justify-between h-16">
           <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 bg-blue-600 rounded flex items-center justify-center text-white font-bold">
+            <div
+              class="w-10 h-10 bg-blue-600 rounded flex items-center justify-center text-white font-bold"
+            >
               B
             </div>
             <div>
-              <a
-                href="#"
-                class="text-lg font-semibold text-gray-800"
+              <a href="#" class="text-lg font-semibold text-gray-800"
                 >Blog Post</a
               >
               <div class="text-xs text-gray-500">Your simple journal</div>
@@ -64,6 +64,26 @@
         </div>
       </div>
     </nav>
+    <!-- Hero section -->
+    <section class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+      <div class="max-w-4xl mx-auto px-4 py-16 text-center">
+        <h1 class="text-3xl sm:text-4xl font-extrabold mb-4">
+          Welcome to Blog Post
+        </h1>
+        <p class="text-blue-100 mb-6">
+          Write and share short posts quickly. Your simple journal built with
+          plain JavaScript and Tailwind.
+        </p>
+        <div class="flex items-center justify-center gap-3">
+          <button
+            onclick="addData()"
+            class="px-5 py-3 bg-white text-blue-700 font-semibold rounded-lg hover:bg-gray-100 transition"
+          >
+            Create New Post
+          </button>
+        </div>
+      </div>
+    </section>
 
     <div class="flex-grow max-w-3xl mx-auto w-full px-4 py-10">
       <div class="bg-white shadow-lg rounded-lg p-6">
@@ -140,10 +160,16 @@
     <!-- FOOTER -->
     <footer class="bg-gray-800 border-t mt-8 text-gray-100">
       <div class="max-w-4xl mx-auto px-4 py-8">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div
+          class="flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+        >
           <div class="text-center md:text-left">
-            <div class="flex items-center justify-center md:justify-start gap-3">
-              <div class="w-10 h-10 bg-blue-500 rounded flex items-center justify-center text-white font-bold">
+            <div
+              class="flex items-center justify-center md:justify-start gap-3"
+            >
+              <div
+                class="w-10 h-10 bg-blue-500 rounded flex items-center justify-center text-white font-bold"
+              >
                 B
               </div>
               <div>
@@ -158,19 +184,13 @@
 
           <div class="flex flex-col sm:flex-row items-center gap-3">
             <nav class="flex gap-3">
-              <a
-                href="#"
-                class="text-sm text-gray-300 hover:text-white"
+              <a href="#" class="text-sm text-gray-300 hover:text-white"
                 >About</a
               >
-              <a
-                href="#"
-                class="text-sm text-gray-300 hover:text-white"
+              <a href="#" class="text-sm text-gray-300 hover:text-white"
                 >Privacy</a
               >
-              <a
-                href="#"
-                class="text-sm text-gray-300 hover:text-white"
+              <a href="#" class="text-sm text-gray-300 hover:text-white"
                 >Contact</a
               >
             </nav>

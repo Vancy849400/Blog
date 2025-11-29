@@ -1,14 +1,34 @@
-// Initial blog post data
+// Initial blog post data (loaded from localStorage)
 let data = [];
+
+function loadFromStorage() {
+  try {
+    const raw = localStorage.getItem('object');
+    if (!raw) {
+      data = [];
+      return;
+    }
+    const parsed = JSON.parse(raw);
+    data = Array.isArray(parsed) ? parsed : [];
+  } catch (err) {
+    console.error('Failed to load posts from storage', err);
+    data = [];
+  }
+}
 
 // Read and display all posts from data array
 const readAll = () => {
   // persist current data
-  localStorage.setItem("object", JSON.stringify(data));
+  try {
+    localStorage.setItem('object', JSON.stringify(data));
+  } catch (err) {
+    console.error('Failed to save posts to storage', err);
+  }
 
   // If no posts, show the empty state and clear details
   if (!data || data.length === 0) {
-    document.querySelector(".details").innerHTML = "";
+    const detailsEl = document.querySelector('.details');
+    if (detailsEl) detailsEl.innerHTML = '';
     showEmptyState();
     return;
   }
@@ -16,7 +36,7 @@ const readAll = () => {
   // Hide empty state and render posts
   hideEmptyState();
 
-  let element = "";
+  let element = '';
   data.forEach(
     (record) =>
       (element += `<div class="p-4 md:p-4">
@@ -29,7 +49,8 @@ const readAll = () => {
         </div>
       </div>`)
   );
-  document.querySelector(".details").innerHTML = element;
+  const detailsEl = document.querySelector('.details');
+  if (detailsEl) detailsEl.innerHTML = element;
 };
 
 // Show empty state inside .no_post with a CTA to add a new post
@@ -41,7 +62,6 @@ function showEmptyState() {
     <div class="p-6 text-center text-gray-600">
       <h3 class="text-xl font-semibold mb-2">No Posts Yet</h3>
       <p class="mb-4">Start creating your first blog post to get started!</p>
-      <button onclick="addData()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Create New Post</button>
     </div>
   `;
   // show/hide relevant sections
@@ -135,4 +155,7 @@ function deletePost(id) {
 }
 
 // Initialize and display all posts when page loads
-document.addEventListener("DOMContentLoaded", readAll);
+document.addEventListener("DOMContentLoaded", () => {
+  loadFromStorage();
+  readAll();
+});
