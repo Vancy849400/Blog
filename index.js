@@ -37,18 +37,19 @@ const readAll = () => {
   hideEmptyState();
 
   let element = '';
-  data.forEach(
-    (record) =>
-      (element += `<div class="p-4 md:p-4">
+  data.forEach((record) => {
+    element += `
+      <article class="bg-white shadow rounded-lg p-4">
         <h2 class="text-lg md:text-xl font-bold text-gray-800 mb-2">${record.title}</h2>
-        <p class="text-gray-700 mb-3">${record.des}</p>
+        <p class="text-gray-700 mb-3 break-words">${record.des}</p>
         <p class="text-sm text-gray-600 mb-4">By: <span class="font-semibold">${record.name}</span></p>
-        <div class="flex gap-2">
-          <button onclick="editPost(${record.id})" class="px-4 py-2 bg-green-500 text-white text-sm rounded-lg hover:bg-green-600 transition font-semibold">Edit</button>
-          <button onclick="deletePost(${record.id})" class="px-4 py-2 bg-red-500 text-white text-sm rounded-lg hover:bg-red-600 transition font-semibold">Delete</button>
+        <div class="mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-end gap-2">
+          <button onclick="editPost(${record.id})" class="w-full sm:w-auto px-4 py-2 bg-green-500 text-white text-sm rounded-lg hover:bg-green-600 transition font-semibold">Edit</button>
+          <button onclick="deletePost(${record.id})" class="w-full sm:w-auto px-4 py-2 bg-red-500 text-white text-sm rounded-lg hover:bg-red-600 transition font-semibold">Delete</button>
         </div>
-      </div>`)
-  );
+      </article>`;
+  });
+
   const detailsEl = document.querySelector('.details');
   if (detailsEl) detailsEl.innerHTML = element;
 };
